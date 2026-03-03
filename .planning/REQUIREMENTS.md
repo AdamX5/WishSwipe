@@ -97,34 +97,34 @@ Which phases cover which requirements. Updated during roadmap creation.
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| AUTH-01 | — | Pending |
-| AUTH-02 | — | Pending |
-| AUTH-03 | — | Pending |
-| AUTH-04 | — | Pending |
-| AUTH-05 | — | Pending |
-| NORM-01 | — | Pending |
-| NORM-02 | — | Pending |
-| NORM-03 | — | Pending |
-| NORM-04 | — | Pending |
-| SWIPE-01 | — | Pending |
-| SWIPE-02 | — | Pending |
-| SWIPE-03 | — | Pending |
-| SWIPE-04 | — | Pending |
-| SWIPE-05 | — | Pending |
-| GHOST-01 | — | Pending |
-| GHOST-02 | — | Pending |
-| GHOST-03 | — | Pending |
-| UX-01 | — | Pending |
-| UX-02 | — | Pending |
-| UX-03 | — | Pending |
-| WISH-01 | — | Pending |
-| WISH-02 | — | Pending |
+| AUTH-01 | Phase 1 | Pending |
+| AUTH-02 | Phase 1 | Pending |
+| AUTH-03 | Phase 1 | Pending |
+| AUTH-04 | Phase 1 | Pending |
+| AUTH-05 | Phase 1 | Pending |
+| NORM-01 | Phase 1 | Pending |
+| NORM-02 | Phase 1 | Pending |
+| NORM-03 | Phase 1 | Pending |
+| NORM-04 | Phase 1 | Pending |
+| SWIPE-01 | Phase 2 | Pending |
+| SWIPE-02 | Phase 2 | Pending |
+| SWIPE-03 | Phase 2 | Pending |
+| SWIPE-04 | Phase 2 | Pending |
+| SWIPE-05 | Phase 2 | Pending |
+| GHOST-01 | Phase 2 | Pending |
+| GHOST-02 | Phase 2 | Pending |
+| GHOST-03 | Phase 4 | Pending |
+| UX-01 | Phase 2 | Pending |
+| UX-02 | Phase 2 | Pending |
+| UX-03 | Phase 2 | Pending |
+| WISH-01 | Phase 3 | Pending |
+| WISH-02 | Phase 3 | Pending |
 
 **Coverage:**
 - v1 requirements: 22 total
-- Mapped to phases: 0 (pending roadmap)
-- Unmapped: 22 ⚠️
+- Mapped to phases: 22 (Phase 1: 9, Phase 2: 10, Phase 3: 2, Phase 4: 1)
+- Unmapped: 0
 
 ---
 *Requirements defined: 2026-03-03*
-*Last updated: 2026-03-03 after initial definition*
+*Last updated: 2026-03-03 after roadmap creation*

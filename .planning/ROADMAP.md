@@ -29,7 +29,12 @@ Decimal phases appear between their surrounding integers in numeric order.
   3. Google and Apple OAuth buttons appear on the auth screen (visually present and scaffolded; credential wiring is not required)
   4. The Normaliser fetches products from Dummy JSON and every product record in Convex contains an affiliate URL — no raw store URL reaches the database
   5. Adding a store via ENV config enables it; omitting or setting the flag to false silently skips it with no error or crash
-**Plans**: TBD
+**Plans**: 3 plans
+
+Plans:
+- [ ] 01-01-PLAN.md — Project scaffold: Next.js 15, Convex schema (all 4 tables), Clerk provider chain, middleware, Jest + test stubs
+- [ ] 01-02-PLAN.md — Auth wiring: upsertUser mutation, UserButton sign-out, human verification of AUTH-01 through AUTH-05
+- [ ] 01-03-PLAN.md — Normaliser: StoreConfig types, DummyJSON adapter, ENV config loader, Convex Action + upsertProduct + HTTP endpoint
 
 ### Phase 2: Swipe Engine
 **Goal**: Users can discover products through a fluid, physics-based swipe UI where every interaction is recorded in Convex and micro-UX feedback makes saving feel rewarding
@@ -68,7 +73,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. Foundation | 0/TBD | Not started | - |
+| 1. Foundation | 0/3 | Planned | - |
 | 2. Swipe Engine | 0/TBD | Not started | - |
 | 3. Wishlist | 0/TBD | Not started | - |
 | 4. Data Health | 0/TBD | Not started | - |

@@ -1,15 +1,16 @@
 import type { StoreConfig } from './adapters/types'
 
+// All known store IDs. Adding a new store: add the ID here + implement its adapter.
+const KNOWN_STORES = ['etsy', 'bestbuy', 'amazon', 'ebay', 'aliexpress'] as const
+
 export function loadStoreConfigs(): StoreConfig[] {
-  const prefix = 'STORE_'
   const configs: StoreConfig[] = []
 
-  const enabledStores = Object.entries(process.env)
-    .filter(([key, val]) => key.startsWith(prefix) && key.endsWith('_ENABLED') && val === 'true')
-    .map(([key]) => key.slice(prefix.length, -'_ENABLED'.length).toLowerCase())
-
-  for (const storeId of enabledStores) {
+  for (const storeId of KNOWN_STORES) {
     const upper = storeId.toUpperCase()
+    // Direct key access — required in Convex runtime (Object.entries(process.env) doesn't enumerate)
+    if (process.env[`STORE_${upper}_ENABLED`] !== 'true') continue
+
     configs.push({
       id: storeId,
       apiBase: process.env[`STORE_${upper}_API_BASE`] ?? '',

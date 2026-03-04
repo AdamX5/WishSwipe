@@ -21,7 +21,9 @@ function triggerHaptic() {
 }
 
 export default function SwipeDeck() {
-  const queue = useQuery(api.cardQueue.getCardQueue) ?? []
+  const queueResult = useQuery(api.cardQueue.getCardQueue)
+  const isLoading = queueResult === undefined
+  const queue = queueResult ?? []
   const recordSwipeMutation = useMutation(api.swipes.recordSwipe)
   const undoSwipeMutation = useMutation(api.swipes.undoSwipe)
 
@@ -124,7 +126,9 @@ export default function SwipeDeck() {
         className="relative flex items-center justify-center"
         style={{ height: '24rem' }}
       >
-        {queue.length === 0 || exhausted ? (
+        {isLoading ? (
+          <p className="text-gray-400">Loading...</p>
+        ) : queue.length === 0 || exhausted ? (
           <p className="text-gray-400">No more products — check back later</p>
         ) : (
           displayQueue.map((product, i) => {

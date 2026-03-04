@@ -27,13 +27,13 @@ Requirements for initial release. Each maps to roadmap phases.
 - [ ] **SWIPE-01**: Swipe UI renders exactly 3 cards in the DOM at any time: Active, Next, and Preview
 - [ ] **SWIPE-02**: Active card tracks 1:1 with pointer/finger position during drag with no perceived lag (gesture handler bypasses React reconciler)
 - [ ] **SWIPE-03**: On release, card springs out of view if swipe distance or velocity exceeds threshold; snaps back with spring physics if below threshold — velocity at release is used as initial spring velocity
-- [ ] **SWIPE-04**: Right swipe saves product to wishlist; Left swipe marks product as skipped
-- [ ] **SWIPE-05**: User can undo the last swipe, restoring the card to the deck and reverting the swipe record in Convex
+- [x] **SWIPE-04**: Right swipe saves product to wishlist; Left swipe marks product as skipped
+- [x] **SWIPE-05**: User can undo the last swipe, restoring the card to the deck and reverting the swipe record in Convex
 
 ### Ghost Database
 
-- [ ] **GHOST-01**: Every swipe is recorded in Convex with: direction (right/left), timestamp, user ID, and full product snapshot
-- [ ] **GHOST-02**: Card queue query returns only products the current user has not yet swiped; client pre-fetches ~20 cards to avoid per-swipe round-trips
+- [x] **GHOST-01**: Every swipe is recorded in Convex with: direction (right/left), timestamp, user ID, and full product snapshot
+- [x] **GHOST-02**: Card queue query returns only products the current user has not yet swiped; client pre-fetches ~20 cards to avoid per-swipe round-trips
 - [ ] **GHOST-03**: A scheduled Convex cron job compacts old swipe history (aggregates or prunes records older than threshold) to keep the database lean and algorithm-ready
 
 ### Micro-UX
@@ -109,10 +109,10 @@ Which phases cover which requirements. Updated during roadmap creation.
 | SWIPE-01 | Phase 2 | Pending |
 | SWIPE-02 | Phase 2 | Pending |
 | SWIPE-03 | Phase 2 | Pending |
-| SWIPE-04 | Phase 2 | Pending |
-| SWIPE-05 | Phase 2 | Pending |
-| GHOST-01 | Phase 2 | Pending |
-| GHOST-02 | Phase 2 | Pending |
+| SWIPE-04 | Phase 2 | Complete |
+| SWIPE-05 | Phase 2 | Complete |
+| GHOST-01 | Phase 2 | Complete |
+| GHOST-02 | Phase 2 | Complete |
 | GHOST-03 | Phase 4 | Pending |
 | UX-01 | Phase 2 | Pending |
 | UX-02 | Phase 2 | Pending |

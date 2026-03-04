@@ -49,7 +49,7 @@ Plans:
 **Plans**: 4 plans
 
 Plans:
-- [ ] 02-01-PLAN.md — Install gesture/physics libraries, Convex backend (recordSwipe, undoSwipe, getCardQueue), Wave 0 test stubs
+- [x] 02-01-PLAN.md — Install gesture/physics libraries, Convex backend (recordSwipe, undoSwipe, getCardQueue), Wave 0 test stubs
 - [ ] 02-02-PLAN.md — SwipeCard presentational component, SwipeDeck gesture engine (useSprings + useDrag), page wiring
 - [ ] 02-03-PLAN.md — SwipeOverlay (directional tint + icons), glow-pulse keyframe, haptic feedback, Undo button
 - [ ] 02-04-PLAN.md — Human verification of all 5 Phase 2 success criteria
@@ -80,6 +80,6 @@ Phases execute in numeric order: 1 → 2 → 3 → 4
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
 | 1. Foundation | 3/3 | Complete   | 2026-03-04 |
-| 2. Swipe Engine | 0/4 | Not started | - |
+| 2. Swipe Engine | 1/4 | In Progress | - |
 | 3. Wishlist | 0/TBD | Not started | - |
 | 4. Data Health | 0/TBD | Not started | - |

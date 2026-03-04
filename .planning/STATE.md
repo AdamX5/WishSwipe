@@ -3,15 +3,15 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: executing
-stopped_at: Completed 01-02-PLAN.md
-last_updated: "2026-03-04T10:21:58.981Z"
-last_activity: "2026-03-04 — Plan 01-03 complete: Normaliser (DummyJSON adapter, ENV config, Convex Action, upsertProduct, HTTP endpoint)"
+stopped_at: Completed 02-01-PLAN.md
+last_updated: "2026-03-04T13:19:31Z"
+last_activity: "2026-03-04 — Plan 02-01 complete: Swipe backend (recordSwipe, undoSwipe, getCardQueue), gesture libs installed, 33 tests passing"
 progress:
   total_phases: 4
   completed_phases: 1
-  total_plans: 3
-  completed_plans: 3
-  percent: 17
+  total_plans: 4
+  completed_plans: 4
+  percent: 25
 ---
 
 # Project State
@@ -21,16 +21,16 @@ progress:
 See: .planning/PROJECT.md (updated 2026-03-03)
 
 **Core value:** The swipe engine — product discovery that feels effortless and addictive, where every interaction is captured for future personalization and every outbound click earns affiliate revenue
-**Current focus:** Phase 1: Foundation
+**Current focus:** Phase 2: Swipe Engine
 
 ## Current Position
 
-Phase: 1 of 4 (Foundation)
-Plan: 3 of 3 in current phase (complete)
+Phase: 2 of 4 (Swipe Engine)
+Plan: 1 of 4 in current phase (complete)
 Status: Executing
-Last activity: 2026-03-04 — Plan 01-03 complete: Normaliser (DummyJSON adapter, ENV config, Convex Action, upsertProduct, HTTP endpoint)
+Last activity: 2026-03-04 — Plan 02-01 complete: Swipe backend (recordSwipe, undoSwipe, getCardQueue), gesture libs installed, 33 tests passing
 
-Progress: [██░░░░░░░░] 17%
+Progress: [███░░░░░░░] 25%
 
 ## Performance Metrics
 
@@ -43,14 +43,16 @@ Progress: [██░░░░░░░░] 17%
 
 | Phase | Plans | Total | Avg/Plan |
 |-------|-------|-------|----------|
-| 01-foundation | 2/3 | 6 min | 3 min |
+| 01-foundation | 3/3 | 8 min | 2.7 min |
+| 02-swipe-engine | 1/4 | 2 min | 2 min |
 
 **Recent Trend:**
-- Last 5 plans: 4 min, 2 min
-- Trend: establishing baseline
+- Last 5 plans: 4 min, 2 min, 2 min
+- Trend: fast execution
 
 *Updated after each plan completion*
 | Phase 01-foundation P02 | 60 | 2 tasks | 3 files |
+| Phase 02-swipe-engine P01 | 2 | 3 tasks | 9 files |
 
 ## Accumulated Context
 
@@ -78,6 +80,9 @@ Recent decisions affecting current work:
 - [Phase 01-foundation]: upsertUser uses patch not replace — preserves future fields added to users table without wiping on re-sync
 - [Phase 01-foundation]: SwipeShell as client boundary — server page keeps auth guard, client shell handles useMutation and UserButton
 - [Phase 01-foundation]: afterSignOutUrl on both ClerkProvider and UserButton — ensures sign-out always redirects to /sign-in
+- [Phase 02-swipe-engine P01]: getCardQueue returns [] for unauthenticated calls (not throws) — safe for initial load before Clerk resolves
+- [Phase 02-swipe-engine P01]: TODO comment required after products .collect() as architectural safety marker for future pagination
+- [Phase 02-swipe-engine P01]: recordSwipe atomically writes to swipes + wishlists (right-swipe only); undoSwipe deletes both atomically
 
 ### Pending Todos
 
@@ -94,6 +99,6 @@ Recent decisions affecting current work:
 
 ## Session Continuity
 
-Last session: 2026-03-04T10:11:10.319Z
-Stopped at: Completed 01-02-PLAN.md
+Last session: 2026-03-04T13:19:31Z
+Stopped at: Completed 02-01-PLAN.md
 Resume file: None

@@ -3,14 +3,14 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: executing
-stopped_at: Completed 02-01-PLAN.md
-last_updated: "2026-03-04T13:19:31Z"
+stopped_at: Completed 02-02-PLAN.md
+last_updated: "2026-03-04T13:28:54.958Z"
 last_activity: "2026-03-04 — Plan 02-01 complete: Swipe backend (recordSwipe, undoSwipe, getCardQueue), gesture libs installed, 33 tests passing"
 progress:
   total_phases: 4
   completed_phases: 1
-  total_plans: 4
-  completed_plans: 4
+  total_plans: 7
+  completed_plans: 5
   percent: 25
 ---
 
@@ -53,6 +53,7 @@ Progress: [███░░░░░░░] 25%
 *Updated after each plan completion*
 | Phase 01-foundation P02 | 60 | 2 tasks | 3 files |
 | Phase 02-swipe-engine P01 | 2 | 3 tasks | 9 files |
+| Phase 02-swipe-engine P02 | 5 | 2 tasks | 3 files |
 
 ## Accumulated Context
 
@@ -83,6 +84,9 @@ Recent decisions affecting current work:
 - [Phase 02-swipe-engine P01]: getCardQueue returns [] for unauthenticated calls (not throws) — safe for initial load before Clerk resolves
 - [Phase 02-swipe-engine P01]: TODO comment required after products .collect() as architectural safety marker for future pagination
 - [Phase 02-swipe-engine P01]: recordSwipe atomically writes to swipes + wishlists (right-swipe only); undoSwipe deletes both atomically
+- [Phase 02-swipe-engine]: SPRING_COUNT fixed at 20 (not queue.length) — React hook count must be stable across renders
+- [Phase 02-swipe-engine]: Absolute queue indices (topIndex.current + i) used in gone.current and springs — prevents card-advance bug where next card inherits display position 0 and flies off immediately
+- [Phase 02-swipe-engine]: topIndex and gone are useRef not useState — no React re-renders during drag; api_.start() updates springs imperatively for 60fps tracking
 
 ### Pending Todos
 
@@ -99,6 +103,6 @@ Recent decisions affecting current work:
 
 ## Session Continuity
 
-Last session: 2026-03-04T13:19:31Z
-Stopped at: Completed 02-01-PLAN.md
+Last session: 2026-03-04T13:28:54.956Z
+Stopped at: Completed 02-02-PLAN.md
 Resume file: None

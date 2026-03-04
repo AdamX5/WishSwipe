@@ -24,9 +24,9 @@ Requirements for initial release. Each maps to roadmap phases.
 
 ### Swipe Engine
 
-- [ ] **SWIPE-01**: Swipe UI renders exactly 3 cards in the DOM at any time: Active, Next, and Preview
-- [ ] **SWIPE-02**: Active card tracks 1:1 with pointer/finger position during drag with no perceived lag (gesture handler bypasses React reconciler)
-- [ ] **SWIPE-03**: On release, card springs out of view if swipe distance or velocity exceeds threshold; snaps back with spring physics if below threshold — velocity at release is used as initial spring velocity
+- [x] **SWIPE-01**: Swipe UI renders exactly 3 cards in the DOM at any time: Active, Next, and Preview
+- [x] **SWIPE-02**: Active card tracks 1:1 with pointer/finger position during drag with no perceived lag (gesture handler bypasses React reconciler)
+- [x] **SWIPE-03**: On release, card springs out of view if swipe distance or velocity exceeds threshold; snaps back with spring physics if below threshold — velocity at release is used as initial spring velocity
 - [x] **SWIPE-04**: Right swipe saves product to wishlist; Left swipe marks product as skipped
 - [x] **SWIPE-05**: User can undo the last swipe, restoring the card to the deck and reverting the swipe record in Convex
 
@@ -106,9 +106,9 @@ Which phases cover which requirements. Updated during roadmap creation.
 | NORM-02 | Phase 1 | Complete |
 | NORM-03 | Phase 1 | Complete |
 | NORM-04 | Phase 1 | Complete |
-| SWIPE-01 | Phase 2 | Pending |
-| SWIPE-02 | Phase 2 | Pending |
-| SWIPE-03 | Phase 2 | Pending |
+| SWIPE-01 | Phase 2 | Complete |
+| SWIPE-02 | Phase 2 | Complete |
+| SWIPE-03 | Phase 2 | Complete |
 | SWIPE-04 | Phase 2 | Complete |
 | SWIPE-05 | Phase 2 | Complete |
 | GHOST-01 | Phase 2 | Complete |

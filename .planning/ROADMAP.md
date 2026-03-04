@@ -14,7 +14,7 @@ Decimal phases appear between their surrounding integers in numeric order.
 
 - [x] **Phase 1: Foundation** - Convex schema, authenticated users, and a Normaliser producing affiliate-safe product cards from Dummy JSON (completed 2026-03-04)
 - [x] **Phase 2: Swipe Engine** - 3-card gesture UI with spring physics, right/left save/skip, undo, swipe recording, card queue, and micro-UX feedback (completed 2026-03-04)
-- [ ] **Phase 3: Wishlist** - Authenticated wishlist page with all saved items and affiliate link redirect on every product click
+- [x] **Phase 3: Wishlist** - Authenticated wishlist page with all saved items and affiliate link redirect on every product click (completed 2026-03-04)
 - [ ] **Phase 4: Data Health** - Scheduled Convex cron that compacts old swipe history while protecting wishlist records
 
 ## Phase Details
@@ -64,10 +64,10 @@ Plans:
 **Plans**: 4 plans
 
 Plans:
-- [ ] 03-01-PLAN.md — Wave 0 test scaffold: wishlists.test.ts (pure function tests for getWishlist filter logic and removeFromWishlist ownership check)
-- [ ] 03-02-PLAN.md — Convex backend: getWishlist query + removeFromWishlist mutation + middleware /wishlist protection
-- [ ] 03-03-PLAN.md — Presentational components: BottomNav, WishlistCard, WishlistSheet (bottom sheet with affiliate link + remove)
-- [ ] 03-04-PLAN.md — Page wiring: WishlistShell client component, wishlist page.tsx, swipe page bottom nav integration + human verification
+- [x] 03-01-PLAN.md — Wave 0 test scaffold: wishlists.test.ts (pure function tests for getWishlist filter logic and removeFromWishlist ownership check)
+- [x] 03-02-PLAN.md — Convex backend: getWishlist query + removeFromWishlist mutation + middleware /wishlist protection
+- [x] 03-03-PLAN.md — Presentational components: BottomNav, WishlistCard, WishlistSheet (bottom sheet with affiliate link + remove)
+- [x] 03-04-PLAN.md — Page wiring: WishlistShell client component, wishlist page.tsx, swipe page bottom nav integration + human verification
 
 ### Phase 4: Data Health
 **Goal**: Old swipe history is automatically compacted on a schedule, keeping the Convex database lean without touching wishlist records or right-swipe data
@@ -87,5 +87,5 @@ Phases execute in numeric order: 1 → 2 → 3 → 4
 |-------|----------------|--------|-----------|
 | 1. Foundation | 3/3 | Complete   | 2026-03-04 |
 | 2. Swipe Engine | 4/4 | Complete   | 2026-03-04 |
-| 3. Wishlist | 3/4 | In Progress|  |
+| 3. Wishlist | 4/4 | Complete   | 2026-03-04 |
 | 4. Data Health | 0/TBD | Not started | - |

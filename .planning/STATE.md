@@ -3,8 +3,8 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: executing
-stopped_at: Completed 03-03-PLAN.md
-last_updated: "2026-03-04T20:26:50.849Z"
+stopped_at: Completed 03-wishlist-01-PLAN.md
+last_updated: "2026-03-04T20:26:59.684Z"
 last_activity: "2026-03-04 — Plan 02-04 checkpoint reached: all Phase 2 code complete, awaiting human verification of 8 manual checks"
 progress:
   total_phases: 4
@@ -57,6 +57,7 @@ Progress: [███░░░░░░░] 25%
 | Phase 02-swipe-engine P03 | 5 | 2 tasks | 4 files |
 | Phase 03-wishlist P02 | 2 | 2 tasks | 4 files |
 | Phase 03-wishlist P03 | 5 | 2 tasks | 3 files |
+| Phase 03-wishlist P01 | 2 | 1 tasks | 1 files |
 
 ## Accumulated Context
 
@@ -98,6 +99,7 @@ Recent decisions affecting current work:
 - [Phase 03-wishlist]: Ownership check collapses null-entry and wrong-owner into single 'Not found' throw — avoids leaking whether an ID exists
 - [Phase 03-wishlist]: WishlistItem._id typed as string (not Id<'wishlists'>) to keep presentational components fully Convex-free
 - [Phase 03-wishlist]: Visit Store uses anchor tag with target=_blank (not window.open) — semantically correct affiliate link pattern
+- [Phase 03-wishlist]: filterWishlistByUser and checkOwnership as named pure functions mirror Convex handler logic — makes behavioral contract explicit in test file
 
 ### Pending Todos
 
@@ -114,6 +116,6 @@ Recent decisions affecting current work:
 
 ## Session Continuity
 
-Last session: 2026-03-04T20:26:37.441Z
-Stopped at: Completed 03-03-PLAN.md
+Last session: 2026-03-04T20:26:59.682Z
+Stopped at: Completed 03-wishlist-01-PLAN.md
 Resume file: None

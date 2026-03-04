@@ -2,16 +2,16 @@
 gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
-status: planning
-stopped_at: Phase 1 context gathered
-last_updated: "2026-03-03T19:03:03.907Z"
-last_activity: 2026-03-03 — Roadmap created; 22 v1 requirements mapped across 4 phases
+status: executing
+stopped_at: Completed 01-01-PLAN.md
+last_updated: "2026-03-04T09:04:39Z"
+last_activity: 2026-03-04 — Plan 01-01 complete: Next.js + Convex schema + Clerk + Jest scaffold
 progress:
   total_phases: 4
   completed_phases: 0
-  total_plans: 0
-  completed_plans: 0
-  percent: 0
+  total_plans: 3
+  completed_plans: 1
+  percent: 8
 ---
 
 # Project State
@@ -26,28 +26,28 @@ See: .planning/PROJECT.md (updated 2026-03-03)
 ## Current Position
 
 Phase: 1 of 4 (Foundation)
-Plan: 0 of TBD in current phase
-Status: Ready to plan
-Last activity: 2026-03-03 — Roadmap created; 22 v1 requirements mapped across 4 phases
+Plan: 1 of 3 in current phase
+Status: Executing
+Last activity: 2026-03-04 — Plan 01-01 complete: Next.js + Convex schema + Clerk + Jest scaffold
 
-Progress: [░░░░░░░░░░] 0%
+Progress: [█░░░░░░░░░] 8%
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 0
-- Average duration: -
-- Total execution time: 0 hours
+- Total plans completed: 1
+- Average duration: 4 min
+- Total execution time: 0.1 hours
 
 **By Phase:**
 
 | Phase | Plans | Total | Avg/Plan |
 |-------|-------|-------|----------|
-| - | - | - | - |
+| 01-foundation | 1/3 | 4 min | 4 min |
 
 **Recent Trend:**
-- Last 5 plans: -
-- Trend: -
+- Last 5 plans: 4 min
+- Trend: establishing baseline
 
 *Updated after each plan completion*
 
@@ -62,13 +62,20 @@ Recent decisions affecting current work:
 - Dummy JSON API as v1 data source (unblocks engine build without external API approval)
 - Affiliate URLs baked into Normaliser output (monetization structural, not bolted on)
 - ENV-based multi-store config (adding a store = one ENV entry, zero code changes)
-- Next.js 15 App Router required (SSR for share page link previews; affiliate IDs server-side only)
+- Next.js 16 App Router (scaffolded as 16.1.6, latest available — plan referenced 15, same API)
 - Clerk for auth (first-class Convex integration; enables OAuth in v2 without schema changes)
+- ClerkProvider outermost, ConvexClientProvider nested inside (required Clerk+Convex init order)
+- catch-all routes [[...sign-in]] required for Clerk multi-step auth flows
+- affiliateUrl as ONLY URL field in schema — no rawUrl, productUrl, storeUrl ever
+- wishlists table separate from swipes (compaction isolation for Phase 4)
+- TDD RED stubs committed before implementation — Plan 03 turns them GREEN
 - @use-gesture/react + react-spring pairing (ref-based gesture tracking bypasses React reconciler; only correct pairing for 60fps)
 
 ### Pending Todos
 
-None yet.
+- Run `npx convex dev` to initialize Convex project (requires Clerk credentials first)
+- Create Clerk application and update .env.local with real keys
+- Set CLERK_JWT_ISSUER_DOMAIN in both .env.local and Convex dashboard ENV
 
 ### Blockers/Concerns
 
@@ -77,6 +84,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-03-03T19:03:03.898Z
-Stopped at: Phase 1 context gathered
-Resume file: .planning/phases/01-foundation/01-CONTEXT.md
+Last session: 2026-03-04T09:04:39Z
+Stopped at: Completed 01-01-PLAN.md
+Resume file: .planning/phases/01-foundation/01-02-PLAN.md

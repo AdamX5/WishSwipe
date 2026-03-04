@@ -9,17 +9,17 @@ Requirements for initial release. Each maps to roadmap phases.
 
 ### Authentication
 
-- [ ] **AUTH-01**: User can sign up with email and password
-- [ ] **AUTH-02**: User can sign in with email and password and session persists across browser refreshes
-- [ ] **AUTH-03**: User can sign out from any page
-- [ ] **AUTH-04**: Google OAuth sign-in button is present and scaffolded (credentials wired up separately — not v1 functional)
-- [ ] **AUTH-05**: Apple OAuth sign-in button is present and scaffolded (credentials wired up separately — not v1 functional)
+- [x] **AUTH-01**: User can sign up with email and password
+- [x] **AUTH-02**: User can sign in with email and password and session persists across browser refreshes
+- [x] **AUTH-03**: User can sign out from any page
+- [x] **AUTH-04**: Google OAuth sign-in button is present and scaffolded (credentials wired up separately — not v1 functional)
+- [x] **AUTH-05**: Apple OAuth sign-in button is present and scaffolded (credentials wired up separately — not v1 functional)
 
 ### Normaliser
 
-- [ ] **NORM-01**: Normaliser fetches and normalizes products from Dummy JSON API into standard Product Cards (image, title, price, star rating, affiliate URL, source store)
-- [ ] **NORM-02**: Normaliser reads store configuration from ENV using `STORE_*_ENABLED` pattern; stores with missing or `false` flag are silently skipped with no error
-- [ ] **NORM-03**: Normaliser transforms raw product URL into affiliate URL using store-specific affiliate ID from ENV before any URL reaches the client
+- [x] **NORM-01**: Normaliser fetches and normalizes products from Dummy JSON API into standard Product Cards (image, title, price, star rating, affiliate URL, source store)
+- [x] **NORM-02**: Normaliser reads store configuration from ENV using `STORE_*_ENABLED` pattern; stores with missing or `false` flag are silently skipped with no error
+- [x] **NORM-03**: Normaliser transforms raw product URL into affiliate URL using store-specific affiliate ID from ENV before any URL reaches the client
 - [ ] **NORM-04**: When a product is saved to wishlist, all product fields are snapshotted into the wishlist record at save time — independent of future re-normalization
 
 ### Swipe Engine
@@ -97,14 +97,14 @@ Which phases cover which requirements. Updated during roadmap creation.
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| AUTH-01 | Phase 1 | Pending |
-| AUTH-02 | Phase 1 | Pending |
-| AUTH-03 | Phase 1 | Pending |
-| AUTH-04 | Phase 1 | Pending |
-| AUTH-05 | Phase 1 | Pending |
-| NORM-01 | Phase 1 | Pending |
-| NORM-02 | Phase 1 | Pending |
-| NORM-03 | Phase 1 | Pending |
+| AUTH-01 | Phase 1 | Complete |
+| AUTH-02 | Phase 1 | Complete |
+| AUTH-03 | Phase 1 | Complete |
+| AUTH-04 | Phase 1 | Complete |
+| AUTH-05 | Phase 1 | Complete |
+| NORM-01 | Phase 1 | Complete |
+| NORM-02 | Phase 1 | Complete |
+| NORM-03 | Phase 1 | Complete |
 | NORM-04 | Phase 1 | Pending |
 | SWIPE-01 | Phase 2 | Pending |
 | SWIPE-02 | Phase 2 | Pending |

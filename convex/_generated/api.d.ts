@@ -21,6 +21,7 @@ import type * as normaliser_config from "../normaliser/config.js";
 import type * as products from "../products.js";
 import type * as swipes from "../swipes.js";
 import type * as users from "../users.js";
+import type * as wishlists from "../wishlists.js";
 
 import type {
   ApiFromModules,
@@ -42,6 +43,7 @@ declare const fullApi: ApiFromModules<{
   products: typeof products;
   swipes: typeof swipes;
   users: typeof users;
+  wishlists: typeof wishlists;
 }>;
 
 /**

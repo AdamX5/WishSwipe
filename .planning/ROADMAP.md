@@ -61,7 +61,13 @@ Plans:
 **Success Criteria** (what must be TRUE):
   1. An authenticated user can open the wishlist page and see all products they have right-swiped, using the product snapshot data saved at swipe time
   2. Clicking any product in the wishlist opens the store's product page in a new tab via the affiliate URL — no raw store URL is ever used
-**Plans**: TBD
+**Plans**: 4 plans
+
+Plans:
+- [ ] 03-01-PLAN.md — Wave 0 test scaffold: wishlists.test.ts (pure function tests for getWishlist filter logic and removeFromWishlist ownership check)
+- [ ] 03-02-PLAN.md — Convex backend: getWishlist query + removeFromWishlist mutation + middleware /wishlist protection
+- [ ] 03-03-PLAN.md — Presentational components: BottomNav, WishlistCard, WishlistSheet (bottom sheet with affiliate link + remove)
+- [ ] 03-04-PLAN.md — Page wiring: WishlistShell client component, wishlist page.tsx, swipe page bottom nav integration + human verification
 
 ### Phase 4: Data Health
 **Goal**: Old swipe history is automatically compacted on a schedule, keeping the Convex database lean without touching wishlist records or right-swipe data
@@ -81,5 +87,5 @@ Phases execute in numeric order: 1 → 2 → 3 → 4
 |-------|----------------|--------|-----------|
 | 1. Foundation | 3/3 | Complete   | 2026-03-04 |
 | 2. Swipe Engine | 4/4 | Complete   | 2026-03-04 |
-| 3. Wishlist | 0/TBD | Not started | - |
+| 3. Wishlist | 0/4 | Not started | - |
 | 4. Data Health | 0/TBD | Not started | - |

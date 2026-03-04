@@ -1,9 +1,9 @@
-import { action } from '../_generated/server'
+import { internalAction } from '../_generated/server'
 import { internal } from '../_generated/api'
 import { loadStoreConfigs } from './config'
 import { dummyjsonAdapter } from './adapters/dummyjson'
 
-export const ingestAllStores = action({
+export const ingestAllStores = internalAction({
   args: {},
   handler: async (ctx) => {
     const storeConfigs = loadStoreConfigs()  // reads process.env — silently skips missing/disabled stores

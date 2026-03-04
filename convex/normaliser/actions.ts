@@ -2,9 +2,17 @@ import { internalAction } from '../_generated/server'
 import { internal } from '../_generated/api'
 import { loadStoreConfigs } from './config'
 import { etsyAdapter } from './adapters/etsy'
+import { bestbuyAdapter } from './adapters/bestbuy'
+import { amazonAdapter } from './adapters/amazon'
+import { ebayAdapter } from './adapters/ebay'
+import { aliexpressAdapter } from './adapters/aliexpress'
 
 const ADAPTERS = {
   etsy: etsyAdapter,
+  bestbuy: bestbuyAdapter,
+  amazon: amazonAdapter,
+  ebay: ebayAdapter,
+  aliexpress: aliexpressAdapter,
 } as const
 
 export const ingestAllStores = internalAction({

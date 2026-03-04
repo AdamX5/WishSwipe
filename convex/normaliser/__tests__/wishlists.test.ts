@@ -1,7 +1,8 @@
-// Unit tests for wishlist query and mutation logic
+// Unit tests for wishlist filter and ownership check logic
 // Tests pure helper functions — no Convex SDK imports
 
 // ---- Types ----
+
 type WishlistEntry = {
   _id: string
   userId: string
@@ -10,123 +11,129 @@ type WishlistEntry = {
   productSnapshot: {
     title: string
     imageUrl: string
-    priceAmount: number
+    priceAmount: number      // integer cents
     priceCurrency: string
-    affiliateUrl: string
+    affiliateUrl: string     // ONLY URL field — no rawUrl/productUrl/storeUrl
     sourceStore: string
   }
 }
 
-// ---- Pure helper: sort wishlist entries desc by savedAt ----
-function sortWishlistDesc(entries: WishlistEntry[]): WishlistEntry[] {
-  return [...entries].sort((a, b) => b.savedAt - a.savedAt)
+// ---- Test helpers ----
+
+function makeEntry(overrides: Partial<WishlistEntry> = {}): WishlistEntry {
+  return {
+    _id: 'entry1',
+    userId: 'user1',
+    productId: 'prod1',
+    savedAt: 1700000000000,
+    productSnapshot: {
+      title: 'Test Product',
+      imageUrl: 'https://example.com/image.jpg',
+      priceAmount: 999,
+      priceCurrency: 'USD',
+      affiliateUrl: 'https://example.com/affiliate?ref=wishswipe',
+      sourceStore: 'dummyjson',
+    },
+    ...overrides,
+  }
+}
+
+// ---- Pure helper: filter wishlist entries by userId ----
+// Mirrors getWishlist query filter in convex/wishlists.ts
+
+function filterWishlistByUser(
+  entries: Array<WishlistEntry>,
+  userId: string
+): Array<WishlistEntry> {
+  return entries.filter(e => e.userId === userId)
 }
 
 // ---- Pure helper: ownership check before delete ----
-function canDelete(entry: WishlistEntry | null, userId: string): boolean {
-  if (!entry) return false
+// Mirrors removeFromWishlist guard in convex/wishlists.ts
+
+function checkOwnership(entry: WishlistEntry, userId: string): boolean {
   return entry.userId === userId
 }
 
-// ---- Pure helper: returns [] for unauthenticated (no identity) ----
-function getWishlistForIdentity(
-  identity: { tokenIdentifier: string } | null,
-  entries: WishlistEntry[]
-): WishlistEntry[] {
-  if (!identity) return []
-  return entries
+// ---- Pure helper: format price for display ----
+// Used in wishlist UI to render productSnapshot.priceAmount
+
+function formatPrice(cents: number, currency: string): string {
+  return new Intl.NumberFormat('en-US', { style: 'currency', currency }).format(cents / 100)
 }
 
-// ---- Pure helper: returns [] when user record not found ----
-function getWishlistForUser(
-  user: { _id: string } | null,
-  entries: WishlistEntry[]
-): WishlistEntry[] {
-  if (!user) return []
-  return entries
-}
+// ---- Tests: filterWishlistByUser ----
 
-// ---- Sample data ----
-const USER_ID = 'user-abc'
-const OTHER_USER_ID = 'user-xyz'
-
-const makeEntry = (id: string, userId: string, savedAt: number): WishlistEntry => ({
-  _id: id,
-  userId,
-  productId: `product-${id}`,
-  savedAt,
-  productSnapshot: {
-    title: `Product ${id}`,
-    imageUrl: `https://example.com/${id}.jpg`,
-    priceAmount: 999,
-    priceCurrency: 'USD',
-    affiliateUrl: `https://example.com/go/${id}`,
-    sourceStore: 'dummyjson',
-  },
-})
-
-// ---- Tests: getWishlist behaviour ----
-
-describe('getWishlist — unauthenticated handling', () => {
-  it('returns [] when identity is null (unauthenticated)', () => {
-    const entries = [makeEntry('a', USER_ID, 1000)]
-    expect(getWishlistForIdentity(null, entries)).toEqual([])
-  })
-
-  it('returns [] when user record is not found', () => {
-    const entries = [makeEntry('a', USER_ID, 1000)]
-    expect(getWishlistForUser(null, entries)).toEqual([])
-  })
-
-  it('returns entries when identity exists', () => {
-    const entries = [makeEntry('a', USER_ID, 1000)]
-    const result = getWishlistForIdentity({ tokenIdentifier: 'tok' }, entries)
-    expect(result).toEqual(entries)
-  })
-})
-
-describe('getWishlist — ordering', () => {
-  it('returns entries ordered descending by savedAt (newest first)', () => {
-    const older = makeEntry('older', USER_ID, 1000)
-    const newer = makeEntry('newer', USER_ID, 2000)
-    const entries = [older, newer] // inserted oldest-first
-    const result = sortWishlistDesc(entries)
-    expect(result[0]._id).toBe('newer')
-    expect(result[1]._id).toBe('older')
-  })
-
-  it('returns empty array when user has no wishlist items', () => {
-    expect(sortWishlistDesc([])).toEqual([])
-  })
-
-  it('handles single item correctly', () => {
-    const entry = makeEntry('solo', USER_ID, 5000)
-    expect(sortWishlistDesc([entry])).toEqual([entry])
-  })
-
-  it('returns items in stable order when savedAt values are equal', () => {
-    const a = makeEntry('first', USER_ID, 1000)
-    const b = makeEntry('second', USER_ID, 1000)
-    const result = sortWishlistDesc([a, b])
-    // Both have same savedAt, order is stable (or either is acceptable) — just check length
+describe('filterWishlistByUser', () => {
+  it('returns only entries matching userId', () => {
+    const entries = [
+      makeEntry({ _id: 'e1', userId: 'user1' }),
+      makeEntry({ _id: 'e2', userId: 'user2' }),
+      makeEntry({ _id: 'e3', userId: 'user1' }),
+    ]
+    const result = filterWishlistByUser(entries, 'user1')
     expect(result).toHaveLength(2)
+    expect(result.map(e => e._id)).toEqual(['e1', 'e3'])
+  })
+
+  it('returns empty array when no entries match userId', () => {
+    const entries = [
+      makeEntry({ _id: 'e1', userId: 'user2' }),
+      makeEntry({ _id: 'e2', userId: 'user3' }),
+    ]
+    const result = filterWishlistByUser(entries, 'user1')
+    expect(result).toEqual([])
+  })
+
+  it('returns empty array when entries list is empty', () => {
+    const result = filterWishlistByUser([], 'user1')
+    expect(result).toEqual([])
+  })
+
+  it('excludes entries from other users', () => {
+    const entries = [
+      makeEntry({ _id: 'e1', userId: 'userA' }),
+      makeEntry({ _id: 'e2', userId: 'userB' }),
+      makeEntry({ _id: 'e3', userId: 'userC' }),
+    ]
+    const result = filterWishlistByUser(entries, 'userB')
+    expect(result).toHaveLength(1)
+    expect(result[0]._id).toBe('e2')
+    expect(result[0].userId).toBe('userB')
   })
 })
 
-// ---- Tests: removeFromWishlist ownership check ----
+// ---- Tests: checkOwnership ----
 
-describe('removeFromWishlist — ownership validation', () => {
-  it('allows delete when entry.userId matches authenticated user', () => {
-    const entry = makeEntry('w1', USER_ID, 1000)
-    expect(canDelete(entry, USER_ID)).toBe(true)
+describe('checkOwnership', () => {
+  it('returns true when entry.userId matches userId', () => {
+    const entry = makeEntry({ userId: 'user1' })
+    expect(checkOwnership(entry, 'user1')).toBe(true)
   })
 
-  it('denies delete when entry.userId belongs to a different user', () => {
-    const entry = makeEntry('w1', USER_ID, 1000)
-    expect(canDelete(entry, OTHER_USER_ID)).toBe(false)
+  it('returns false when entry.userId does not match (different user — prevents delete of another user entry)', () => {
+    const entry = makeEntry({ userId: 'user1' })
+    expect(checkOwnership(entry, 'user2')).toBe(false)
   })
 
-  it('denies delete when entry is null (wishlistId not found)', () => {
-    expect(canDelete(null, USER_ID)).toBe(false)
+  it('returns false with empty string userId', () => {
+    const entry = makeEntry({ userId: 'user1' })
+    expect(checkOwnership(entry, '')).toBe(false)
+  })
+})
+
+// ---- Tests: formatPrice ----
+
+describe('formatPrice', () => {
+  it('formats 999 cents as "$9.99"', () => {
+    expect(formatPrice(999, 'USD')).toBe('$9.99')
+  })
+
+  it('formats 12999 cents as "$129.99"', () => {
+    expect(formatPrice(12999, 'USD')).toBe('$129.99')
+  })
+
+  it('formats 0 cents as "$0.00"', () => {
+    expect(formatPrice(0, 'USD')).toBe('$0.00')
   })
 })

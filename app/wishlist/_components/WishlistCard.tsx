@@ -1,5 +1,3 @@
-import type { Id } from '../../../convex/_generated/dataModel'
-
 type ProductSnapshot = {
   title: string
   imageUrl: string
@@ -10,7 +8,7 @@ type ProductSnapshot = {
 }
 
 export type WishlistItem = {
-  _id: Id<'wishlists'>
+  _id: string               // Id<'wishlists'> — typed as string to keep component Convex-free
   userId: string
   productId: string
   savedAt: number

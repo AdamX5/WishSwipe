@@ -46,7 +46,13 @@ Plans:
   3. Right-swipe saves the product to the user's wishlist and left-swipe marks it skipped; both are recorded in Convex with direction, timestamp, user ID, and full product snapshot
   4. Tapping Undo restores the last-swiped card to the top of the deck and reverts the Convex swipe record — the previous product is visible and swipeable again
   5. Right-swiping triggers haptic feedback on supported devices, a visual pulse/glow on the card, and a green tint with heart icon overlay during the drag; left drag shows red tint with X icon
-**Plans**: TBD
+**Plans**: 4 plans
+
+Plans:
+- [ ] 02-01-PLAN.md — Install gesture/physics libraries, Convex backend (recordSwipe, undoSwipe, getCardQueue), Wave 0 test stubs
+- [ ] 02-02-PLAN.md — SwipeCard presentational component, SwipeDeck gesture engine (useSprings + useDrag), page wiring
+- [ ] 02-03-PLAN.md — SwipeOverlay (directional tint + icons), glow-pulse keyframe, haptic feedback, Undo button
+- [ ] 02-04-PLAN.md — Human verification of all 5 Phase 2 success criteria
 
 ### Phase 3: Wishlist
 **Goal**: Users can review every product they have saved and navigate directly to the store via the affiliate link
@@ -74,6 +80,6 @@ Phases execute in numeric order: 1 → 2 → 3 → 4
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
 | 1. Foundation | 3/3 | Complete   | 2026-03-04 |
-| 2. Swipe Engine | 0/TBD | Not started | - |
+| 2. Swipe Engine | 0/4 | Not started | - |
 | 3. Wishlist | 0/TBD | Not started | - |
 | 4. Data Health | 0/TBD | Not started | - |

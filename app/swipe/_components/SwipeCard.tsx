@@ -1,16 +1,18 @@
 import type { Doc } from '@/convex/_generated/dataModel'
 import type { SpringValue } from '@react-spring/web'
+import SwipeOverlay from './SwipeOverlay'
 
 interface SwipeCardProps {
   product: Doc<'products'>
   xSpring: SpringValue<number>
+  glowing?: boolean
 }
 
-export default function SwipeCard({ product }: SwipeCardProps) {
+export default function SwipeCard({ product, xSpring, glowing }: SwipeCardProps) {
   const price = (product.priceAmount / 100).toFixed(2)
 
   return (
-    <div className="relative w-72 h-96 rounded-2xl shadow-xl overflow-hidden bg-white select-none">
+    <div className={`relative w-72 h-96 rounded-2xl shadow-xl overflow-hidden bg-white select-none ${glowing ? 'animate-glow-pulse' : ''}`}>
       <img
         src={product.imageUrl}
         alt={product.title}
@@ -32,6 +34,7 @@ export default function SwipeCard({ product }: SwipeCardProps) {
           </p>
         )}
       </div>
+      <SwipeOverlay xSpring={xSpring} />
     </div>
   )
 }

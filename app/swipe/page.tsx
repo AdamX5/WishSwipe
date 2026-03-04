@@ -1,6 +1,7 @@
 import { auth } from '@clerk/nextjs/server'
 import { redirect } from 'next/navigation'
 import SwipeShell from './_components/SwipeShell'
+import SwipeDeck from './_components/SwipeDeck'
 
 export default async function SwipePage() {
   const { userId } = await auth()
@@ -9,8 +10,8 @@ export default async function SwipePage() {
   return (
     <main className="flex min-h-screen flex-col">
       <SwipeShell />
-      <div className="flex flex-1 items-center justify-center">
-        <p className="text-gray-500">Swipe Engine — coming in Phase 2</p>
+      <div className="flex flex-1 items-center justify-center p-4">
+        <SwipeDeck />
       </div>
     </main>
   )

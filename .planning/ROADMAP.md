@@ -13,7 +13,7 @@ WishSwipe is built in four phases that follow strict dependency order. Phase 1 e
 Decimal phases appear between their surrounding integers in numeric order.
 
 - [x] **Phase 1: Foundation** - Convex schema, authenticated users, and a Normaliser producing affiliate-safe product cards from Dummy JSON (completed 2026-03-04)
-- [ ] **Phase 2: Swipe Engine** - 3-card gesture UI with spring physics, right/left save/skip, undo, swipe recording, card queue, and micro-UX feedback
+- [x] **Phase 2: Swipe Engine** - 3-card gesture UI with spring physics, right/left save/skip, undo, swipe recording, card queue, and micro-UX feedback (completed 2026-03-04)
 - [ ] **Phase 3: Wishlist** - Authenticated wishlist page with all saved items and affiliate link redirect on every product click
 - [ ] **Phase 4: Data Health** - Scheduled Convex cron that compacts old swipe history while protecting wishlist records
 
@@ -80,6 +80,6 @@ Phases execute in numeric order: 1 → 2 → 3 → 4
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
 | 1. Foundation | 3/3 | Complete   | 2026-03-04 |
-| 2. Swipe Engine | 3/4 | In Progress|  |
+| 2. Swipe Engine | 4/4 | Complete   | 2026-03-04 |
 | 3. Wishlist | 0/TBD | Not started | - |
 | 4. Data Health | 0/TBD | Not started | - |

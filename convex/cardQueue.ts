@@ -10,14 +10,17 @@ export const getCardQueue = query({
       .query('users')
       .withIndex('by_token', q => q.eq('tokenIdentifier', identity.tokenIdentifier))
       .unique()
-    if (!user) return []
 
-    const swiped = await ctx.db
-      .query('swipes')
-      .withIndex('by_user', q => q.eq('userId', user._id))
-      .collect()
-
-    const swipedIds = new Set(swiped.map(s => s.productId))
+    // If user record doesn't exist yet (upsertUser still in flight), show all products —
+    // there are no swipes to filter for a brand new user anyway.
+    const swipedIds = new Set<string>()
+    if (user) {
+      const swiped = await ctx.db
+        .query('swipes')
+        .withIndex('by_user', q => q.eq('userId', user._id))
+        .collect()
+      swiped.forEach(s => swipedIds.add(s.productId.toString()))
+    }
 
     const allActive = await ctx.db
       .query('products')

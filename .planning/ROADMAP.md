@@ -87,5 +87,5 @@ Phases execute in numeric order: 1 → 2 → 3 → 4
 |-------|----------------|--------|-----------|
 | 1. Foundation | 3/3 | Complete   | 2026-03-04 |
 | 2. Swipe Engine | 4/4 | Complete   | 2026-03-04 |
-| 3. Wishlist | 0/4 | Not started | - |
+| 3. Wishlist | 3/4 | In Progress|  |
 | 4. Data Health | 0/TBD | Not started | - |

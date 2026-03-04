@@ -3,14 +3,14 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: executing
-stopped_at: Phase 3 context gathered
-last_updated: "2026-03-04T20:06:10.833Z"
+stopped_at: Completed 03-03-PLAN.md
+last_updated: "2026-03-04T20:26:37.443Z"
 last_activity: "2026-03-04 — Plan 02-04 checkpoint reached: all Phase 2 code complete, awaiting human verification of 8 manual checks"
 progress:
   total_phases: 4
   completed_phases: 2
-  total_plans: 7
-  completed_plans: 7
+  total_plans: 11
+  completed_plans: 10
   percent: 25
 ---
 
@@ -55,6 +55,8 @@ Progress: [███░░░░░░░] 25%
 | Phase 02-swipe-engine P01 | 2 | 3 tasks | 9 files |
 | Phase 02-swipe-engine P02 | 5 | 2 tasks | 3 files |
 | Phase 02-swipe-engine P03 | 5 | 2 tasks | 4 files |
+| Phase 03-wishlist P02 | 2 | 2 tasks | 4 files |
+| Phase 03-wishlist P03 | 5 | 2 tasks | 3 files |
 
 ## Accumulated Context
 
@@ -91,6 +93,11 @@ Recent decisions affecting current work:
 - [Phase 02-swipe-engine]: Undo button placed in SwipeDeck JSX directly — avoids prop-drilling handler through server component boundary
 - [Phase 02-swipe-engine]: goneCount React state mirrors gone.current Set size — makes Undo disabled state reactive without waiting for unrelated re-render
 - [Phase 02-swipe-engine]: glowingCard keyed on absIndex not display position — prevents glow from re-triggering on wrong card after deck advances
+- [Phase 03-wishlist]: getWishlist returns [] for unauthenticated callers — matches getCardQueue pattern, safe for pre-Clerk-resolve load
+- [Phase 03-wishlist]: removeFromWishlist uses wishlistId (_id) directly for delete — unguessable, no index scan needed
+- [Phase 03-wishlist]: Ownership check collapses null-entry and wrong-owner into single 'Not found' throw — avoids leaking whether an ID exists
+- [Phase 03-wishlist]: WishlistItem._id typed as string (not Id<'wishlists'>) to keep presentational components fully Convex-free
+- [Phase 03-wishlist]: Visit Store uses anchor tag with target=_blank (not window.open) — semantically correct affiliate link pattern
 
 ### Pending Todos
 
@@ -107,6 +114,6 @@ Recent decisions affecting current work:
 
 ## Session Continuity
 
-Last session: 2026-03-04T20:06:10.831Z
-Stopped at: Phase 3 context gathered
-Resume file: .planning/phases/03-wishlist/03-CONTEXT.md
+Last session: 2026-03-04T20:26:37.441Z
+Stopped at: Completed 03-03-PLAN.md
+Resume file: None

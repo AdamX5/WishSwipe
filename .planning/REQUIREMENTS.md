@@ -44,8 +44,8 @@ Requirements for initial release. Each maps to roadmap phases.
 
 ### Wishlist
 
-- [ ] **WISH-01**: Authenticated user can view all their saved (right-swiped) products on a wishlist page
-- [ ] **WISH-02**: Clicking a product in the wishlist opens the store's product page via the affiliate link in a new tab
+- [x] **WISH-01**: Authenticated user can view all their saved (right-swiped) products on a wishlist page
+- [x] **WISH-02**: Clicking a product in the wishlist opens the store's product page via the affiliate link in a new tab
 
 ## v2 Requirements
 
@@ -117,8 +117,8 @@ Which phases cover which requirements. Updated during roadmap creation.
 | UX-01 | Phase 2 | Complete |
 | UX-02 | Phase 2 | Complete |
 | UX-03 | Phase 2 | Complete |
-| WISH-01 | Phase 3 | Pending |
-| WISH-02 | Phase 3 | Pending |
+| WISH-01 | Phase 3 | Complete |
+| WISH-02 | Phase 3 | Complete |
 
 **Coverage:**
 - v1 requirements: 22 total

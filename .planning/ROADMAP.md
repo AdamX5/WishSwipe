@@ -32,9 +32,9 @@ Decimal phases appear between their surrounding integers in numeric order.
 **Plans**: 3 plans
 
 Plans:
-- [ ] 01-01-PLAN.md — Project scaffold: Next.js 15, Convex schema (all 4 tables), Clerk provider chain, middleware, Jest + test stubs
+- [x] 01-01-PLAN.md — Project scaffold: Next.js 15, Convex schema (all 4 tables), Clerk provider chain, middleware, Jest + test stubs
 - [ ] 01-02-PLAN.md — Auth wiring: upsertUser mutation, UserButton sign-out, human verification of AUTH-01 through AUTH-05
-- [ ] 01-03-PLAN.md — Normaliser: StoreConfig types, DummyJSON adapter, ENV config loader, Convex Action + upsertProduct + HTTP endpoint
+- [x] 01-03-PLAN.md — Normaliser: StoreConfig types, DummyJSON adapter, ENV config loader, Convex Action + upsertProduct + HTTP endpoint
 
 ### Phase 2: Swipe Engine
 **Goal**: Users can discover products through a fluid, physics-based swipe UI where every interaction is recorded in Convex and micro-UX feedback makes saving feel rewarding
@@ -73,7 +73,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. Foundation | 1/3 | In Progress|  |
+| 1. Foundation | 2/3 | In Progress|  |
 | 2. Swipe Engine | 0/TBD | Not started | - |
 | 3. Wishlist | 0/TBD | Not started | - |
 | 4. Data Health | 0/TBD | Not started | - |

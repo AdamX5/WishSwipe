@@ -20,7 +20,7 @@ Requirements for initial release. Each maps to roadmap phases.
 - [x] **NORM-01**: Normaliser fetches and normalizes products from Dummy JSON API into standard Product Cards (image, title, price, star rating, affiliate URL, source store)
 - [x] **NORM-02**: Normaliser reads store configuration from ENV using `STORE_*_ENABLED` pattern; stores with missing or `false` flag are silently skipped with no error
 - [x] **NORM-03**: Normaliser transforms raw product URL into affiliate URL using store-specific affiliate ID from ENV before any URL reaches the client
-- [ ] **NORM-04**: When a product is saved to wishlist, all product fields are snapshotted into the wishlist record at save time — independent of future re-normalization
+- [x] **NORM-04**: When a product is saved to wishlist, all product fields are snapshotted into the wishlist record at save time — independent of future re-normalization
 
 ### Swipe Engine
 
@@ -105,7 +105,7 @@ Which phases cover which requirements. Updated during roadmap creation.
 | NORM-01 | Phase 1 | Complete |
 | NORM-02 | Phase 1 | Complete |
 | NORM-03 | Phase 1 | Complete |
-| NORM-04 | Phase 1 | Pending |
+| NORM-04 | Phase 1 | Complete |
 | SWIPE-01 | Phase 2 | Pending |
 | SWIPE-02 | Phase 2 | Pending |
 | SWIPE-03 | Phase 2 | Pending |
@@ -127,4 +127,4 @@ Which phases cover which requirements. Updated during roadmap creation.
 
 ---
 *Requirements defined: 2026-03-03*
-*Last updated: 2026-03-03 after roadmap creation*
+*Last updated: 2026-03-04 after Plan 01-03 (Normaliser) completion — NORM-01 through NORM-04 complete*

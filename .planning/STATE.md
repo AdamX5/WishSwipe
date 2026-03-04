@@ -3,15 +3,15 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: executing
-stopped_at: Completed 01-01-PLAN.md
-last_updated: "2026-03-04T09:04:39Z"
-last_activity: 2026-03-04 — Plan 01-01 complete: Next.js + Convex schema + Clerk + Jest scaffold
+stopped_at: Completed 01-03-PLAN.md
+last_updated: "2026-03-04T09:10:00Z"
+last_activity: 2026-03-04 — Plan 01-03 complete: Normaliser (DummyJSON adapter, ENV config, Convex Action, upsertProduct, HTTP endpoint)
 progress:
   total_phases: 4
   completed_phases: 0
   total_plans: 3
-  completed_plans: 1
-  percent: 8
+  completed_plans: 2
+  percent: 17
 ---
 
 # Project State
@@ -26,11 +26,11 @@ See: .planning/PROJECT.md (updated 2026-03-03)
 ## Current Position
 
 Phase: 1 of 4 (Foundation)
-Plan: 1 of 3 in current phase
+Plan: 3 of 3 in current phase (complete)
 Status: Executing
-Last activity: 2026-03-04 — Plan 01-01 complete: Next.js + Convex schema + Clerk + Jest scaffold
+Last activity: 2026-03-04 — Plan 01-03 complete: Normaliser (DummyJSON adapter, ENV config, Convex Action, upsertProduct, HTTP endpoint)
 
-Progress: [█░░░░░░░░░] 8%
+Progress: [██░░░░░░░░] 17%
 
 ## Performance Metrics
 
@@ -43,10 +43,10 @@ Progress: [█░░░░░░░░░] 8%
 
 | Phase | Plans | Total | Avg/Plan |
 |-------|-------|-------|----------|
-| 01-foundation | 1/3 | 4 min | 4 min |
+| 01-foundation | 2/3 | 6 min | 3 min |
 
 **Recent Trend:**
-- Last 5 plans: 4 min
+- Last 5 plans: 4 min, 2 min
 - Trend: establishing baseline
 
 *Updated after each plan completion*
@@ -68,14 +68,20 @@ Recent decisions affecting current work:
 - catch-all routes [[...sign-in]] required for Clerk multi-step auth flows
 - affiliateUrl as ONLY URL field in schema — no rawUrl, productUrl, storeUrl ever
 - wishlists table separate from swipes (compaction isolation for Phase 4)
-- TDD RED stubs committed before implementation — Plan 03 turns them GREEN
+- TDD RED stubs committed before implementation — Plan 03 turns them GREEN (done)
 - @use-gesture/react + react-spring pairing (ref-based gesture tracking bypasses React reconciler; only correct pairing for 60fps)
+- affiliateUrl is the ONLY URL field on ProductCard — enforced structurally, not by convention
+- Per-product ctx.runMutation pattern (not bulk) — keeps each write within Convex 1-second mutation budget
+- loadStoreConfigs() silently skips missing/false ENABLED flags — safe zero-config deployment
+- Adapter pattern: each store exports { fetchProducts, normalize } — adding a store = one new adapter file + ENV block
 
 ### Pending Todos
 
 - Run `npx convex dev` to initialize Convex project (requires Clerk credentials first)
 - Create Clerk application and update .env.local with real keys
 - Set CLERK_JWT_ISSUER_DOMAIN in both .env.local and Convex dashboard ENV
+- Set Convex ENV vars for Normaliser: STORE_DUMMYJSON_ENABLED=true, STORE_DUMMYJSON_API_BASE, STORE_DUMMYJSON_ADAPTER=dummyjson
+- Run `npx convex run normaliser/actions:ingestAllStores` after ENV vars set to populate products table
 
 ### Blockers/Concerns
 
@@ -84,6 +90,6 @@ Recent decisions affecting current work:
 
 ## Session Continuity
 
-Last session: 2026-03-04T09:04:39Z
-Stopped at: Completed 01-01-PLAN.md
+Last session: 2026-03-04T09:10:00Z
+Stopped at: Completed 01-03-PLAN.md
 Resume file: .planning/phases/01-foundation/01-02-PLAN.md

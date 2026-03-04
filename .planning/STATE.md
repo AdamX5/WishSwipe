@@ -3,14 +3,14 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: executing
-stopped_at: Completed 01-03-PLAN.md
-last_updated: "2026-03-04T09:10:00Z"
-last_activity: 2026-03-04 — Plan 01-03 complete: Normaliser (DummyJSON adapter, ENV config, Convex Action, upsertProduct, HTTP endpoint)
+stopped_at: Completed 01-02-PLAN.md
+last_updated: "2026-03-04T10:11:10.321Z"
+last_activity: "2026-03-04 — Plan 01-03 complete: Normaliser (DummyJSON adapter, ENV config, Convex Action, upsertProduct, HTTP endpoint)"
 progress:
   total_phases: 4
-  completed_phases: 0
+  completed_phases: 1
   total_plans: 3
-  completed_plans: 2
+  completed_plans: 3
   percent: 17
 ---
 
@@ -50,6 +50,7 @@ Progress: [██░░░░░░░░] 17%
 - Trend: establishing baseline
 
 *Updated after each plan completion*
+| Phase 01-foundation P02 | 60 | 2 tasks | 3 files |
 
 ## Accumulated Context
 
@@ -74,6 +75,9 @@ Recent decisions affecting current work:
 - Per-product ctx.runMutation pattern (not bulk) — keeps each write within Convex 1-second mutation budget
 - loadStoreConfigs() silently skips missing/false ENABLED flags — safe zero-config deployment
 - Adapter pattern: each store exports { fetchProducts, normalize } — adding a store = one new adapter file + ENV block
+- [Phase 01-foundation]: upsertUser uses patch not replace — preserves future fields added to users table without wiping on re-sync
+- [Phase 01-foundation]: SwipeShell as client boundary — server page keeps auth guard, client shell handles useMutation and UserButton
+- [Phase 01-foundation]: afterSignOutUrl on both ClerkProvider and UserButton — ensures sign-out always redirects to /sign-in
 
 ### Pending Todos
 
@@ -90,6 +94,6 @@ Recent decisions affecting current work:
 
 ## Session Continuity
 
-Last session: 2026-03-04T09:10:00Z
-Stopped at: Completed 01-03-PLAN.md
-Resume file: .planning/phases/01-foundation/01-02-PLAN.md
+Last session: 2026-03-04T10:11:10.319Z
+Stopped at: Completed 01-02-PLAN.md
+Resume file: None

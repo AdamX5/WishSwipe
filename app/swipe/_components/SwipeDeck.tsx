@@ -145,7 +145,7 @@ export default function SwipeDeck() {
             )
           })
         )}
-        {!exhausted && displayQueue.length < 3 && (
+        {!exhausted && displayQueue.length > 0 && displayQueue.length < 3 && (
           <div
             className="absolute rounded-2xl bg-gray-100"
             style={{ width: '18rem', height: '24rem', zIndex: 0 }}

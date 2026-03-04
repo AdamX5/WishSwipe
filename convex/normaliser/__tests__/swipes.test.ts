@@ -59,7 +59,7 @@ describe('validateSnapshotShape', () => {
     priceAmount: 999,
     priceCurrency: 'USD',
     affiliateUrl: 'https://example.com/affiliate?ref=wishswipe',
-    sourceStore: 'dummyjson',
+    sourceStore: 'etsy',
   }
 
   it('accepts a snapshot with all required fields', () => {

@@ -1,35 +1,38 @@
 import { internalAction } from '../_generated/server'
 import { internal } from '../_generated/api'
 import { loadStoreConfigs } from './config'
-import { dummyjsonAdapter } from './adapters/dummyjson'
+import { etsyAdapter } from './adapters/etsy'
+
+const ADAPTERS = {
+  etsy: etsyAdapter,
+} as const
 
 export const ingestAllStores = internalAction({
   args: {},
   handler: async (ctx) => {
-    const storeConfigs = loadStoreConfigs()  // reads process.env — silently skips missing/disabled stores
+    const storeConfigs = loadStoreConfigs()
 
     let totalWritten = 0
 
     for (const config of storeConfigs) {
-      // Only dummyjson adapter in v1 — future stores add their adapter here
-      if (config.adapter !== 'dummyjson') {
+      const adapter = ADAPTERS[config.adapter as keyof typeof ADAPTERS]
+      if (!adapter) {
         console.log(`Skipping unknown adapter: ${config.adapter}`)
         continue
       }
 
-      let rawProducts: Awaited<ReturnType<typeof dummyjsonAdapter.fetchProducts>>
+      let rawProducts: Awaited<ReturnType<typeof adapter.fetchProducts>>
       try {
-        rawProducts = await dummyjsonAdapter.fetchProducts(config)
+        rawProducts = await adapter.fetchProducts(config)
       } catch (err) {
         console.error(`Failed to fetch from ${config.id}:`, err)
-        continue  // skip this store, do not crash the whole Action
+        continue
       }
 
       for (const raw of rawProducts) {
-        const normalized = dummyjsonAdapter.normalize(raw, config)
-        if (!normalized) continue  // skip invalid/malformed products
+        const normalized = adapter.normalize(raw as never, config)
+        if (!normalized) continue
 
-        // Per-product write — one atomic mutation per product (NEVER bulk)
         await ctx.runMutation(internal.products.upsertProduct, normalized)
         totalWritten++
       }

@@ -14,22 +14,22 @@ afterEach(() => {
 })
 
 describe('loadStoreConfigs', () => {
-  it('returns one config when STORE_DUMMYJSON_ENABLED=true', async () => {
-    process.env.STORE_DUMMYJSON_ENABLED = 'true'
-    process.env.STORE_DUMMYJSON_API_BASE = 'https://dummyjson.com'
-    process.env.STORE_DUMMYJSON_AFFILIATE_ID = 'test-affiliate'
-    process.env.STORE_DUMMYJSON_ADAPTER = 'dummyjson'
+  it('returns one config when STORE_ETSY_ENABLED=true', async () => {
+    process.env.STORE_ETSY_ENABLED = 'true'
+    process.env.STORE_ETSY_API_BASE = 'https://openapi.etsy.com/v3'
+    process.env.STORE_ETSY_AFFILIATE_ID = 'test-affiliate'
+    process.env.STORE_ETSY_ADAPTER = 'etsy'
 
     const { loadStoreConfigs } = await import('../config')
     const configs = loadStoreConfigs()
 
     expect(configs).toHaveLength(1)
-    expect(configs[0].id).toBe('dummyjson')
+    expect(configs[0].id).toBe('etsy')
     expect(configs[0].affiliateId).toBe('test-affiliate')
   })
 
-  it('returns empty array when STORE_DUMMYJSON_ENABLED=false', async () => {
-    process.env.STORE_DUMMYJSON_ENABLED = 'false'
+  it('returns empty array when STORE_ETSY_ENABLED=false', async () => {
+    process.env.STORE_ETSY_ENABLED = 'false'
 
     const { loadStoreConfigs } = await import('../config')
     const configs = loadStoreConfigs()
@@ -37,8 +37,8 @@ describe('loadStoreConfigs', () => {
     expect(configs).toHaveLength(0)
   })
 
-  it('returns empty array when STORE_DUMMYJSON_ENABLED is not set', async () => {
-    delete process.env.STORE_DUMMYJSON_ENABLED
+  it('returns empty array when STORE_ETSY_ENABLED is not set', async () => {
+    delete process.env.STORE_ETSY_ENABLED
 
     const { loadStoreConfigs } = await import('../config')
     const configs = loadStoreConfigs()

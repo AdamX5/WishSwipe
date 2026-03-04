@@ -31,14 +31,14 @@ WishSwipe — swipe-based product discovery and wishlist platform.
 STORE_{NAME}_ENABLED=true|false
 STORE_{NAME}_API_BASE=https://...
 STORE_{NAME}_AFFILIATE_ID=...
-STORE_{NAME}_ADAPTER=dummyjson
+STORE_{NAME}_ADAPTER=etsy
 ```
 Stores with missing or `false` `ENABLED` flag are silently skipped.
+**Convex env vars** (not `.env.local`) — set via `npx convex env set KEY value` or Convex dashboard.
 
 ## Testing
 
 - `npm test` — runs Jest on `convex/normaliser/__tests__/`
-- TDD: test stubs for Normaliser are in RED state; Plan 03 implements them to GREEN
 
 ## Phases
 

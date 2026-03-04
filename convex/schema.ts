@@ -12,7 +12,7 @@ export default defineSchema({
     .index('by_token', ['tokenIdentifier']),
 
   products: defineTable({
-    sourceStore: v.string(),            // "dummyjson" | future stores
+    sourceStore: v.string(),            // "etsy" | future stores
     sourceId: v.string(),              // original ID in source system
     title: v.string(),
     description: v.optional(v.string()),

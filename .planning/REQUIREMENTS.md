@@ -38,9 +38,9 @@ Requirements for initial release. Each maps to roadmap phases.
 
 ### Micro-UX
 
-- [ ] **UX-01**: Device haptic feedback (vibration pulse) fires when user right-swipes to save a product
-- [ ] **UX-02**: Active card displays a visual pulse or glow effect when saved to wishlist (the "Dopamine Hit")
-- [ ] **UX-03**: A directional overlay appears on the card as it tilts during drag — green tint / heart icon for right, red tint / X icon for left
+- [x] **UX-01**: Device haptic feedback (vibration pulse) fires when user right-swipes to save a product
+- [x] **UX-02**: Active card displays a visual pulse or glow effect when saved to wishlist (the "Dopamine Hit")
+- [x] **UX-03**: A directional overlay appears on the card as it tilts during drag — green tint / heart icon for right, red tint / X icon for left
 
 ### Wishlist
 
@@ -114,9 +114,9 @@ Which phases cover which requirements. Updated during roadmap creation.
 | GHOST-01 | Phase 2 | Complete |
 | GHOST-02 | Phase 2 | Complete |
 | GHOST-03 | Phase 4 | Pending |
-| UX-01 | Phase 2 | Pending |
-| UX-02 | Phase 2 | Pending |
-| UX-03 | Phase 2 | Pending |
+| UX-01 | Phase 2 | Complete |
+| UX-02 | Phase 2 | Complete |
+| UX-03 | Phase 2 | Complete |
 | WISH-01 | Phase 3 | Pending |
 | WISH-02 | Phase 3 | Pending |
 

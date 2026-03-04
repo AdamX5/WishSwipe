@@ -3,14 +3,14 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: executing
-stopped_at: Completed 02-02-PLAN.md
-last_updated: "2026-03-04T13:28:54.958Z"
+stopped_at: Completed 02-03-PLAN.md
+last_updated: "2026-03-04T13:32:18.894Z"
 last_activity: "2026-03-04 — Plan 02-01 complete: Swipe backend (recordSwipe, undoSwipe, getCardQueue), gesture libs installed, 33 tests passing"
 progress:
   total_phases: 4
   completed_phases: 1
   total_plans: 7
-  completed_plans: 5
+  completed_plans: 6
   percent: 25
 ---
 
@@ -54,6 +54,7 @@ Progress: [███░░░░░░░] 25%
 | Phase 01-foundation P02 | 60 | 2 tasks | 3 files |
 | Phase 02-swipe-engine P01 | 2 | 3 tasks | 9 files |
 | Phase 02-swipe-engine P02 | 5 | 2 tasks | 3 files |
+| Phase 02-swipe-engine P03 | 5 | 2 tasks | 4 files |
 
 ## Accumulated Context
 
@@ -87,6 +88,9 @@ Recent decisions affecting current work:
 - [Phase 02-swipe-engine]: SPRING_COUNT fixed at 20 (not queue.length) — React hook count must be stable across renders
 - [Phase 02-swipe-engine]: Absolute queue indices (topIndex.current + i) used in gone.current and springs — prevents card-advance bug where next card inherits display position 0 and flies off immediately
 - [Phase 02-swipe-engine]: topIndex and gone are useRef not useState — no React re-renders during drag; api_.start() updates springs imperatively for 60fps tracking
+- [Phase 02-swipe-engine]: Undo button placed in SwipeDeck JSX directly — avoids prop-drilling handler through server component boundary
+- [Phase 02-swipe-engine]: goneCount React state mirrors gone.current Set size — makes Undo disabled state reactive without waiting for unrelated re-render
+- [Phase 02-swipe-engine]: glowingCard keyed on absIndex not display position — prevents glow from re-triggering on wrong card after deck advances
 
 ### Pending Todos
 
@@ -103,6 +107,6 @@ Recent decisions affecting current work:
 
 ## Session Continuity
 
-Last session: 2026-03-04T13:28:54.956Z
-Stopped at: Completed 02-02-PLAN.md
+Last session: 2026-03-04T13:32:18.891Z
+Stopped at: Completed 02-03-PLAN.md
 Resume file: None

@@ -1,7 +1,7 @@
 import type { StoreConfig } from './adapters/types'
 
 // All known store IDs. Adding a new store: add the ID here + implement its adapter.
-const KNOWN_STORES = ['etsy', 'bestbuy', 'amazon', 'ebay', 'aliexpress'] as const
+const KNOWN_STORES = ['etsy', 'bestbuy', 'amazon', 'ebay', 'aliexpress', 'dummyjson'] as const
 
 export function loadStoreConfigs(): StoreConfig[] {
   const configs: StoreConfig[] = []

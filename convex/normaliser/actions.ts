@@ -6,6 +6,7 @@ import { bestbuyAdapter } from './adapters/bestbuy'
 import { amazonAdapter } from './adapters/amazon'
 import { ebayAdapter } from './adapters/ebay'
 import { aliexpressAdapter } from './adapters/aliexpress'
+import { dummyjsonAdapter } from './adapters/dummyjson'
 
 const ADAPTERS = {
   etsy: etsyAdapter,
@@ -13,6 +14,7 @@ const ADAPTERS = {
   amazon: amazonAdapter,
   ebay: ebayAdapter,
   aliexpress: aliexpressAdapter,
+  dummyjson: dummyjsonAdapter,
 } as const
 
 export const ingestAllStores = internalAction({

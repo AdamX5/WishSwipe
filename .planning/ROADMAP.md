@@ -76,7 +76,11 @@ Plans:
 **Success Criteria** (what must be TRUE):
   1. A Convex scheduled cron job runs on a defined cadence and aggregates or prunes left-swipe records older than the configured threshold — wishlist records and right-swipe records are never modified or deleted by the job
   2. After the cron runs, the database contains fewer old left-swipe records and all previously saved wishlist items remain intact and retrievable
-**Plans**: TBD
+**Plans**: 2 plans
+
+Plans:
+- [ ] 04-01-PLAN.md — Wave 0 TDD scaffold: by_direction_time schema index + failing compaction.test.ts (isCompactable + filterCompactable pure function tests)
+- [ ] 04-02-PLAN.md — Implementation: compaction.ts internalMutations (turn tests GREEN) + crons.ts daily schedule + human verification
 
 ## Progress
 
@@ -88,4 +92,4 @@ Phases execute in numeric order: 1 → 2 → 3 → 4
 | 1. Foundation | 3/3 | Complete   | 2026-03-04 |
 | 2. Swipe Engine | 4/4 | Complete   | 2026-03-04 |
 | 3. Wishlist | 4/4 | Complete   | 2026-03-04 |
-| 4. Data Health | 0/TBD | Not started | - |
+| 4. Data Health | 0/2 | Not started | - |

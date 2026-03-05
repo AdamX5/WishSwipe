@@ -45,7 +45,8 @@ export default defineSchema({
   })
     .index('by_user', ['userId'])
     .index('by_user_time', ['userId', 'swipedAt'])
-    .index('by_user_product', ['userId', 'productId']),
+    .index('by_user_product', ['userId', 'productId'])
+    .index('by_direction_time', ['direction', 'swipedAt']),
 
   // Durable wishlist — separate table, NEVER compacted (Phase 4 compaction targets swipes only)
   wishlists: defineTable({

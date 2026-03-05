@@ -34,7 +34,7 @@ Requirements for initial release. Each maps to roadmap phases.
 
 - [x] **GHOST-01**: Every swipe is recorded in Convex with: direction (right/left), timestamp, user ID, and full product snapshot
 - [x] **GHOST-02**: Card queue query returns only products the current user has not yet swiped; client pre-fetches ~20 cards to avoid per-swipe round-trips
-- [ ] **GHOST-03**: A scheduled Convex cron job compacts old swipe history (aggregates or prunes records older than threshold) to keep the database lean and algorithm-ready
+- [x] **GHOST-03**: A scheduled Convex cron job compacts old swipe history (aggregates or prunes records older than threshold) to keep the database lean and algorithm-ready
 
 ### Micro-UX
 
@@ -113,7 +113,7 @@ Which phases cover which requirements. Updated during roadmap creation.
 | SWIPE-05 | Phase 2 | Complete |
 | GHOST-01 | Phase 2 | Complete |
 | GHOST-02 | Phase 2 | Complete |
-| GHOST-03 | Phase 4 | Pending |
+| GHOST-03 | Phase 4 | Complete |
 | UX-01 | Phase 2 | Complete |
 | UX-02 | Phase 2 | Complete |
 | UX-03 | Phase 2 | Complete |

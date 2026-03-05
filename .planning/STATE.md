@@ -3,15 +3,15 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: executing
-stopped_at: Completed 04-01-PLAN.md
-last_updated: "2026-03-05T09:15:15.495Z"
-last_activity: "2026-03-04 — Plan 03-04 complete: wishlist page wired end-to-end, human verification approved, Phase 3 complete"
+stopped_at: Completed 04-02-PLAN.md
+last_updated: "2026-03-05T09:31:32.915Z"
+last_activity: "2026-03-05 — Plan 04-01 complete: by_direction_time schema index + Wave 0 RED compaction test scaffold"
 progress:
   total_phases: 4
-  completed_phases: 3
+  completed_phases: 4
   total_plans: 13
-  completed_plans: 12
-  percent: 75
+  completed_plans: 13
+  percent: 100
 ---
 
 # Project State
@@ -21,16 +21,16 @@ progress:
 See: .planning/PROJECT.md (updated 2026-03-03)
 
 **Core value:** The swipe engine — product discovery that feels effortless and addictive, where every interaction is captured for future personalization and every outbound click earns affiliate revenue
-**Current focus:** Phase 4: Data Health
+**Current focus:** Phase 4: Data Health — COMPLETE
 
 ## Current Position
 
-Phase: 4 of 4 (Data Health) — in progress, Plan 1 of 2 complete
-Plan: 1 of 2 in Phase 4 (complete)
-Status: Executing
-Last activity: 2026-03-05 — Plan 04-01 complete: by_direction_time schema index + Wave 0 RED compaction test scaffold
+Phase: 4 of 4 (Data Health) — COMPLETE, all 2 plans done
+Plan: 2 of 2 in Phase 4 (complete)
+Status: Complete — all 4 phases finished
+Last activity: 2026-03-05 — Plan 04-02 complete: count-based per-user compaction (keep last 10 swipes), daily cron wired, 10 tests GREEN
 
-Progress: [█████████░] 92%
+Progress: [██████████] 100%
 
 ## Performance Metrics
 
@@ -61,6 +61,7 @@ Progress: [█████████░] 92%
 | Phase 03-wishlist P03 | 5 | 2 tasks | 3 files |
 | Phase 03-wishlist P04 | 10 | 3 tasks | 3 files |
 | Phase 04-data-health P01 | 1 | 2 tasks | 2 files |
+| Phase 04 P02 | 8 | 1 tasks | 3 files |
 
 ## Accumulated Context
 
@@ -107,6 +108,8 @@ Recent decisions affecting current work:
 - [Phase 03-wishlist P04]: Server page auth guard + client shell boundary: server page handles auth()/redirect()/BottomNav; client shell handles all Convex hooks (useQuery/useMutation)
 - [Phase 04-data-health]: by_direction_time compound index on swipes table enables index-level filtering for compaction (direction='left' + swipedAt range scan)
 - [Phase 04-data-health]: Wave 0 RED stub pattern: inline stubs throw 'not implemented' in test file, Plan 04-02 implements compaction.ts to turn GREEN
+- [Phase 04-data-health]: Count-based per-user retention (KEEP=10) replaces 30-day time-based cutoff — bounds storage O(N users) regardless of activity level
+- [Phase 04-data-health]: All swipe directions count against per-user keep limit — simplifies logic, makes storage bound unconditional
 
 ### Pending Todos
 
@@ -123,6 +126,6 @@ Recent decisions affecting current work:
 
 ## Session Continuity
 
-Last session: 2026-03-05T09:15:15.492Z
-Stopped at: Completed 04-01-PLAN.md
+Last session: 2026-03-05T09:31:32.913Z
+Stopped at: Completed 04-02-PLAN.md
 Resume file: None

@@ -34,7 +34,7 @@ Requirements for initial release. Each maps to roadmap phases.
 
 - [x] **GHOST-01**: Every swipe is recorded in Convex with: direction (right/left), timestamp, user ID, and full product snapshot
 - [x] **GHOST-02**: Card queue query returns only products the current user has not yet swiped; client pre-fetches ~20 cards to avoid per-swipe round-trips
-- [x] **GHOST-03**: A scheduled Convex cron job compacts old swipe history (aggregates or prunes records older than threshold) to keep the database lean and algorithm-ready
+- [x] **GHOST-03**: A scheduled Convex cron job enforces a per-user swipe retention limit (keep last 10 swipes) to keep the swipes table lean; saved items are preserved in the wishlists table which is never compacted
 
 ### Micro-UX
 

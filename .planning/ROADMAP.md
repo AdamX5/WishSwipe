@@ -70,12 +70,13 @@ Plans:
 - [x] 03-04-PLAN.md — Page wiring: WishlistShell client component, wishlist page.tsx, swipe page bottom nav integration + human verification
 
 ### Phase 4: Data Health
-**Goal**: Old swipe history is automatically compacted on a schedule, keeping the Convex database lean without touching wishlist records or right-swipe data
+**Goal**: Swipe history is automatically compacted on a schedule, keeping the Convex database lean — the swipes table acts as an undo buffer (last 10 per user), while the wishlists table remains the permanent record of saved items
 **Depends on**: Phase 3
 **Requirements**: GHOST-03
 **Success Criteria** (what must be TRUE):
-  1. A Convex scheduled cron job runs on a defined cadence and aggregates or prunes left-swipe records older than the configured threshold — wishlist records and right-swipe records are never modified or deleted by the job
-  2. After the cron runs, the database contains fewer old left-swipe records and all previously saved wishlist items remain intact and retrievable
+  1. A Convex scheduled cron job runs daily and enforces a per-user swipe retention limit (keep last 10 swipes, any direction) — the wishlists table is never touched by the job
+  2. After the cron runs, no user has more than 10 records in the swipes table, and all wishlist items remain intact and retrievable
+**Design note**: Strategy revised at Phase 4 checkpoint from time-based left-swipe deletion to count-based per-user retention. Right-swipes beyond the keep window are removed from the swipes table — this is acceptable because saved items are permanently preserved in the wishlists table (separate, never compacted).
 **Plans**: 2 plans
 
 Plans:

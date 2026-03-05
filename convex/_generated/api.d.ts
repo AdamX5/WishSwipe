@@ -14,6 +14,7 @@ import type * as normaliser_actions from "../normaliser/actions.js";
 import type * as normaliser_adapters_aliexpress from "../normaliser/adapters/aliexpress.js";
 import type * as normaliser_adapters_amazon from "../normaliser/adapters/amazon.js";
 import type * as normaliser_adapters_bestbuy from "../normaliser/adapters/bestbuy.js";
+import type * as normaliser_adapters_dummyjson from "../normaliser/adapters/dummyjson.js";
 import type * as normaliser_adapters_ebay from "../normaliser/adapters/ebay.js";
 import type * as normaliser_adapters_etsy from "../normaliser/adapters/etsy.js";
 import type * as normaliser_adapters_types from "../normaliser/adapters/types.js";
@@ -36,6 +37,7 @@ declare const fullApi: ApiFromModules<{
   "normaliser/adapters/aliexpress": typeof normaliser_adapters_aliexpress;
   "normaliser/adapters/amazon": typeof normaliser_adapters_amazon;
   "normaliser/adapters/bestbuy": typeof normaliser_adapters_bestbuy;
+  "normaliser/adapters/dummyjson": typeof normaliser_adapters_dummyjson;
   "normaliser/adapters/ebay": typeof normaliser_adapters_ebay;
   "normaliser/adapters/etsy": typeof normaliser_adapters_etsy;
   "normaliser/adapters/types": typeof normaliser_adapters_types;

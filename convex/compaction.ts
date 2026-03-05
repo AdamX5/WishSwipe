@@ -1,61 +1,65 @@
 // convex/compaction.ts
-// INVARIANT: This module ONLY touches the swipes table, direction='left'.
-// wishlists table and right-swipe records are NEVER modified by this code.
+// INVARIANT: This module ONLY touches the swipes table.
+// wishlists table is NEVER modified by this code.
+//
+// Strategy: count-based per-user retention.
+// Keep the most recent KEEP_SWIPES_PER_USER swipes per user.
+// Older swipes (any direction) are deleted to keep memory lean.
+// This preserves enough history for undo while bounding storage per user.
 import { internalMutation } from './_generated/server'
 import { internal } from './_generated/api'
 import { v } from 'convex/values'
 
-const COMPACTION_THRESHOLD_MS = 30 * 24 * 60 * 60 * 1000  // 30 days
-const DELETE_BATCH_SIZE = 100
+export const KEEP_SWIPES_PER_USER = 10  // keep last N swipes per user for undo
 
-// Entry point called by cron — checks if any compactable records exist, then kicks off pagination.
-export const compactLeftSwipes = internalMutation({
+// Entry point called by cron — paginates through users and compacts each one's swipe history.
+export const compactUserSwipes = internalMutation({
   args: {},
   handler: async (ctx) => {
-    const cutoff = Date.now() - COMPACTION_THRESHOLD_MS
-    const exists = await ctx.db
-      .query('swipes')
-      .withIndex('by_direction_time', q =>
-        q.eq('direction', 'left').lt('swipedAt', cutoff)
-      )
-      .first()
-    if (exists) {
-      await ctx.scheduler.runAfter(0, internal.compaction.compactLeftSwipesPage, {
-        cursor: null,
-        cutoff,
-        deletedSoFar: 0,
-      })
-    }
+    await ctx.scheduler.runAfter(0, internal.compaction.compactUserSwipesPage, {
+      cursor: null,
+      deletedSoFar: 0,
+    })
   },
 })
 
-// Paginated worker — deletes one batch of 100, reschedules if more remain.
-export const compactLeftSwipesPage = internalMutation({
+// Paginated worker — processes one batch of users, reschedules if more remain.
+export const compactUserSwipesPage = internalMutation({
   args: {
     cursor: v.union(v.string(), v.null()),
-    cutoff: v.number(),
     deletedSoFar: v.number(),
   },
-  handler: async (ctx, { cursor, cutoff, deletedSoFar }) => {
-    const results = await ctx.db
-      .query('swipes')
-      .withIndex('by_direction_time', q =>
-        q.eq('direction', 'left').lt('swipedAt', cutoff)
-      )
-      .paginate({ cursor, numItems: DELETE_BATCH_SIZE })
+  handler: async (ctx, { cursor, deletedSoFar }) => {
+    const USERS_PER_BATCH = 50
 
-    for (const swipe of results.page) {
-      await ctx.db.delete(swipe._id)
+    const results = await ctx.db
+      .query('users')
+      .paginate({ cursor, numItems: USERS_PER_BATCH })
+
+    let batchDeleted = 0
+    for (const user of results.page) {
+      // Get all swipes for this user, newest first (desc order by swipedAt)
+      const swipes = await ctx.db
+        .query('swipes')
+        .withIndex('by_user_time', q => q.eq('userId', user._id))
+        .order('desc')
+        .collect()
+
+      // Delete everything beyond the keep limit
+      const toDelete = swipes.slice(KEEP_SWIPES_PER_USER)
+      for (const swipe of toDelete) {
+        await ctx.db.delete(swipe._id)
+        batchDeleted++
+      }
     }
 
     if (!results.isDone) {
-      await ctx.scheduler.runAfter(0, internal.compaction.compactLeftSwipesPage, {
+      await ctx.scheduler.runAfter(0, internal.compaction.compactUserSwipesPage, {
         cursor: results.continueCursor,
-        cutoff,
-        deletedSoFar: deletedSoFar + results.page.length,
+        deletedSoFar: deletedSoFar + batchDeleted,
       })
     } else {
-      console.log(`[compaction] deleted ${deletedSoFar + results.page.length} old left-swipe records`)
+      console.log(`[compaction] deleted ${deletedSoFar + batchDeleted} excess swipe records (keeping last ${KEEP_SWIPES_PER_USER} per user)`)
     }
   },
 })

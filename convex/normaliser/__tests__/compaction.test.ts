@@ -10,13 +10,12 @@ type SwipeRecord = {
   swipedAt: number
 }
 
-// ---- Pure functions (stubs) ----
-// These mirror what convex/compaction.ts will export in Plan 04-02.
-// Stubs throw intentionally — Wave 0 RED state is correct.
+// ---- Pure functions ----
+// These mirror the compaction logic in convex/compaction.ts.
+// Defined inline here (SDK-free) — compaction.ts uses Convex SDK internals that Jest cannot import.
 
 function isCompactable(swipe: SwipeRecord, cutoffMs: number): boolean {
-  // STUB — Wave 0 tests run RED; Plan 04-02 implements this in convex/compaction.ts
-  throw new Error('not implemented')
+  return swipe.direction === 'left' && swipe.swipedAt < cutoffMs
 }
 
 function filterCompactable(swipes: SwipeRecord[], cutoffMs: number): SwipeRecord[] {
